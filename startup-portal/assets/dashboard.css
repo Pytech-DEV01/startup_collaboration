@@ -1,0 +1,597 @@
+/* ============================================================
+   STARTUP COLLABORATION PORTAL — Dashboard Stylesheet
+   Dashboard-specific components, stats, mini-cards, quick actions
+   ============================================================ */
+
+/* ============================================================
+   1. STATS ROW
+   ============================================================ */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stats-row .stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-row .stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Card 1 — Purple accent */
+.stat-card:nth-child(1) {
+  border-left-color: #6c63ff;
+}
+.stat-card:nth-child(1)::after {
+  background: linear-gradient(to bottom, #6c63ff, #00d2ff);
+}
+.stat-card:nth-child(1) .stat-value {
+  background: linear-gradient(135deg, #6c63ff, #00d2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card 2 — Blue accent */
+.stat-card:nth-child(2) {
+  border-left-color: #00d2ff;
+}
+.stat-card:nth-child(2)::after {
+  background: linear-gradient(to bottom, #00d2ff, #00e676);
+}
+.stat-card:nth-child(2) .stat-value {
+  background: linear-gradient(135deg, #00d2ff, #00e676);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card 3 — Green accent */
+.stat-card:nth-child(3) {
+  border-left-color: #00e676;
+}
+.stat-card:nth-child(3)::after {
+  background: linear-gradient(to bottom, #00e676, #00bfa5);
+}
+.stat-card:nth-child(3) .stat-value {
+  background: linear-gradient(135deg, #00e676, #00bfa5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card 4 — Orange accent */
+.stat-card:nth-child(4) {
+  border-left-color: #ffab00;
+}
+.stat-card:nth-child(4)::after {
+  background: linear-gradient(to bottom, #ffab00, #ff6d00);
+}
+.stat-card:nth-child(4) .stat-value {
+  background: linear-gradient(135deg, #ffab00, #ff6d00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card 5 — Pink accent */
+.stat-card:nth-child(5) {
+  border-left-color: #f093fb;
+}
+.stat-card:nth-child(5)::after {
+  background: linear-gradient(to bottom, #f093fb, #f5576c);
+}
+.stat-card:nth-child(5) .stat-value {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Card 6 — Red accent */
+.stat-card:nth-child(6) {
+  border-left-color: #ff5252;
+}
+.stat-card:nth-child(6)::after {
+  background: linear-gradient(to bottom, #ff5252, #d50000);
+}
+.stat-card:nth-child(6) .stat-value {
+  background: linear-gradient(135deg, #ff5252, #d50000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Stat trend indicator */
+.stat-card .stat-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+.stat-trend.up {
+  color: var(--accent-green);
+}
+.stat-trend.down {
+  color: var(--accent-red);
+}
+.stat-trend i {
+  font-size: 0.7rem;
+}
+
+/* ============================================================
+   2. DASHBOARD GRID
+   ============================================================ */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+}
+.section-title i {
+  color: var(--accent-purple);
+  font-size: 1.1rem;
+}
+.section-title .count-badge {
+  background: rgba(108, 99, 255, 0.15);
+  color: var(--accent-purple);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  margin-left: auto;
+  font-weight: 700;
+}
+
+/* ============================================================
+   3. STARTUP MINI CARD
+   ============================================================ */
+.startup-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+}
+.startup-mini-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateX(4px);
+  border-color: rgba(108, 99, 255, 0.2);
+}
+
+.startup-mini-card .mini-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  flex-shrink: 0;
+}
+
+.startup-mini-card .mini-info {
+  flex: 1;
+  min-width: 0;
+}
+.startup-mini-card .mini-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.startup-mini-card .mini-info p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.startup-mini-card .mini-status {
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   4. EVENT MINI CARD
+   ============================================================ */
+.event-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+}
+.event-mini-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateX(4px);
+  border-color: rgba(240, 147, 251, 0.2);
+}
+
+.event-date-badge {
+  width: 50px;
+  height: 56px;
+  border-radius: 10px;
+  background: var(--gradient-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.event-date-badge .month {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  opacity: 0.9;
+  line-height: 1;
+  color: white;
+}
+.event-date-badge .day {
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: white;
+}
+
+.event-mini-card .event-info {
+  flex: 1;
+  min-width: 0;
+}
+.event-mini-card .event-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.event-mini-card .event-info p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.event-mini-card .event-type {
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   5. COLLABORATION MINI CARD
+   ============================================================ */
+.collab-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 0.75rem;
+}
+.collab-mini-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(0, 210, 255, 0.2);
+}
+
+.collab-mini-card .collab-entities {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+}
+.collab-mini-card .collab-entity {
+  background: rgba(108, 99, 255, 0.1);
+  padding: 0.35rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+  color: var(--text-primary);
+}
+.collab-mini-card .collab-arrow {
+  color: var(--accent-purple);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.collab-mini-card .collab-status {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ============================================================
+   6. QUICK ACTIONS
+   ============================================================ */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.quick-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.5rem 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  color: var(--text-secondary);
+}
+.quick-action-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-color: rgba(108, 99, 255, 0.3);
+  color: var(--text-primary);
+}
+
+.quick-action-btn i {
+  font-size: 1.5rem;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.quick-action-btn span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Quick action variants */
+.quick-action-btn.action-startup i { background: var(--gradient-primary); }
+.quick-action-btn.action-event i   { background: var(--gradient-secondary); }
+.quick-action-btn.action-funding i { background: var(--gradient-success); }
+.quick-action-btn.action-collab i  { background: var(--gradient-warning); }
+
+/* ============================================================
+   7. ACTIVITY FEED
+   ============================================================ */
+.activity-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  transition: all 0.3s ease;
+}
+.activity-item:last-child {
+  border-bottom: none;
+}
+.activity-item:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.activity-item .activity-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+.activity-icon.icon-add    { background: rgba(0, 230, 118, 0.15);   color: var(--accent-green); }
+.activity-icon.icon-update { background: rgba(0, 210, 255, 0.15);   color: var(--accent-blue); }
+.activity-icon.icon-delete { background: rgba(255, 82, 82, 0.15);   color: var(--accent-red); }
+.activity-icon.icon-event  { background: rgba(240, 147, 251, 0.15); color: var(--accent-pink); }
+.activity-icon.icon-fund   { background: rgba(255, 171, 0, 0.15);   color: var(--accent-orange); }
+
+.activity-item .activity-content {
+  flex: 1;
+}
+.activity-item .activity-content p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+.activity-item .activity-content p strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.activity-item .activity-time {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+/* ============================================================
+   8. WELCOME SECTION
+   ============================================================ */
+.welcome-section {
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.6s ease;
+}
+.welcome-section h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+.welcome-section h1 span {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.welcome-section p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* ============================================================
+   9. CHART PLACEHOLDER / DATA VIZ AREA
+   ============================================================ */
+.chart-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   10. PROGRESS BAR
+   ============================================================ */
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 0.75rem;
+}
+.progress-bar .progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  background: var(--gradient-primary);
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.progress-bar .progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Progress bar color variants */
+.progress-bar .progress-fill.green  { background: var(--gradient-success); }
+.progress-bar .progress-fill.pink   { background: var(--gradient-secondary); }
+.progress-bar .progress-fill.orange { background: var(--gradient-warning); }
+
+/* ============================================================
+   11. NOTIFICATION DOT
+   ============================================================ */
+.notification-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-red);
+  animation: pulse 2s infinite;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   12. RESPONSIVE — DASHBOARD
+   ============================================================ */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .quick-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .startup-mini-card,
+  .event-mini-card,
+  .collab-mini-card {
+    padding: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+  .quick-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .welcome-section h1 {
+    font-size: 1.35rem;
+  }
+  .quick-action-btn {
+    padding: 1.25rem 0.75rem;
+  }
+  .dashboard-grid {
+    gap: 1rem;
+  }
+}

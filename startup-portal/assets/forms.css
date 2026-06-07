@@ -1,0 +1,776 @@
+/* ============================================================
+   STARTUP COLLABORATION PORTAL — Forms & Modals Stylesheet
+   Form controls, modals, validation, custom inputs
+   ============================================================ */
+
+/* ============================================================
+   1. MODAL OVERLAY & CONTAINER
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.modal-overlay.active {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ── Modal Card ── */
+.modal {
+  background: var(--bg-secondary, #1a1a2e);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+.modal.modal-lg {
+  max-width: 800px;
+}
+.modal.modal-sm {
+  max-width: 420px;
+}
+
+/* ── Modal Header ── */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+.modal-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6c63ff, #00d2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.modal-header .close-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+.modal-header .close-btn:hover {
+  background: rgba(255, 82, 82, 0.2);
+  color: #ff5252;
+  transform: rotate(90deg);
+}
+
+/* ── Modal Body ── */
+.modal-body {
+  padding: 1.75rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Modal Footer ── */
+.modal-footer {
+  padding: 1.25rem 1.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================================
+   2. FORM GROUPS
+   ============================================================ */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.form-group .form-hint {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 0.35rem;
+}
+
+.form-group input:disabled,
+.form-group select:disabled,
+.form-group textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   3. FORM ROW — Side-by-side inputs
+   ============================================================ */
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+.form-row .form-group {
+  flex: 1;
+}
+
+/* ============================================================
+   4. SELECT STYLING
+   ============================================================ */
+.form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.form-group select option {
+  background: #1a1a2e;
+  color: #ffffff;
+  padding: 0.5rem;
+}
+
+/* ============================================================
+   5. CUSTOM CHECKBOX
+   ============================================================ */
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.form-check input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.form-check input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #6c63ff, #00d2ff);
+  border-color: transparent;
+}
+
+.form-check input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-check input[type="checkbox"]:hover {
+  border-color: rgba(108, 99, 255, 0.5);
+}
+
+.form-check label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+/* ============================================================
+   6. CUSTOM RADIO
+   ============================================================ */
+.form-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+}
+
+.form-radio input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.form-radio input[type="radio"]:checked {
+  border-color: #6c63ff;
+}
+
+.form-radio input[type="radio"]:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6c63ff, #00d2ff);
+}
+
+.form-radio input[type="radio"]:hover {
+  border-color: rgba(108, 99, 255, 0.5);
+}
+
+.form-radio label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+/* ============================================================
+   7. FORM VALIDATION STATES
+   ============================================================ */
+
+/* Error state */
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+  border-color: #ff5252;
+  box-shadow: 0 0 0 3px rgba(255, 82, 82, 0.15);
+}
+.form-group.error label {
+  color: #ff5252;
+}
+
+.form-group .error-message {
+  font-size: 0.75rem;
+  color: #ff5252;
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.form-group .error-message::before {
+  content: '⚠';
+  font-size: 0.8rem;
+}
+
+/* Success state */
+.form-group.success input,
+.form-group.success select,
+.form-group.success textarea {
+  border-color: #00e676;
+  box-shadow: 0 0 0 3px rgba(0, 230, 118, 0.15);
+}
+.form-group.success label {
+  color: #00e676;
+}
+
+/* ============================================================
+   8. SUBMIT BUTTON
+   ============================================================ */
+.form-submit {
+  width: 100%;
+  padding: 0.875rem;
+  background: linear-gradient(135deg, #6c63ff, #00d2ff);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-submit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.15), transparent);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(108, 99, 255, 0.4);
+}
+.form-submit:hover::before {
+  opacity: 1;
+}
+
+.form-submit:active {
+  transform: translateY(0);
+}
+
+/* Loading state */
+.form-submit.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+.form-submit.loading::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   9. FORM DIVIDER
+   ============================================================ */
+.form-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 1.5rem 0;
+  position: relative;
+}
+.form-divider span {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-secondary, #1a1a2e);
+  padding: 0 1rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   10. FILE UPLOAD
+   ============================================================ */
+.file-upload {
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.02);
+}
+.file-upload:hover {
+  border-color: rgba(108, 99, 255, 0.5);
+  background: rgba(108, 99, 255, 0.05);
+}
+.file-upload.dragover {
+  border-color: #6c63ff;
+  background: rgba(108, 99, 255, 0.1);
+}
+
+.file-upload i {
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.file-upload p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}
+.file-upload .file-types {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.25);
+  margin-top: 0.35rem;
+}
+.file-upload .browse-link {
+  color: #6c63ff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ============================================================
+   11. INPUT WITH ICON
+   ============================================================ */
+.input-icon-wrapper {
+  position: relative;
+}
+.input-icon-wrapper i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.9rem;
+  z-index: 1;
+}
+.input-icon-wrapper input {
+  padding-left: 2.75rem;
+}
+
+/* ============================================================
+   12. TOGGLE SWITCH
+   ============================================================ */
+.toggle-switch {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 26px;
+  transition: all 0.3s ease;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background: linear-gradient(135deg, #6c63ff, #00d2ff);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(22px);
+}
+
+.toggle-switch input:focus + .toggle-slider {
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+/* Toggle with label */
+.toggle-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+}
+.toggle-group .toggle-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.toggle-group .toggle-desc {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 0.15rem;
+}
+
+/* ============================================================
+   13. FORM SECTION HEADERS
+   ============================================================ */
+.form-section {
+  margin-bottom: 1.5rem;
+}
+.form-section-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary, #ffffff);
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.form-section-title i {
+  color: #6c63ff;
+  font-size: 0.85rem;
+}
+.form-section-desc {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   14. INPUT COUNTER / CHARACTER LIMIT
+   ============================================================ */
+.input-counter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.25rem;
+}
+.input-counter span {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+.input-counter span.warning {
+  color: var(--accent-orange, #ffab00);
+}
+.input-counter span.danger {
+  color: var(--accent-red, #ff5252);
+}
+
+/* ============================================================
+   15. SEARCH SELECT / COMBOBOX
+   ============================================================ */
+.search-select {
+  position: relative;
+}
+.search-select .search-select-input {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+.search-select .search-select-input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+.search-select .dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: #1a1a2e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100;
+  display: none;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+.search-select .dropdown.open {
+  display: block;
+  animation: fadeInUp 0.2s ease;
+}
+.search-select .dropdown-item {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+}
+.search-select .dropdown-item:hover {
+  background: rgba(108, 99, 255, 0.1);
+  color: white;
+}
+
+/* ============================================================
+   16. TAG INPUT
+   ============================================================ */
+.tag-input-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  min-height: 44px;
+  align-items: center;
+  transition: all 0.3s ease;
+  cursor: text;
+}
+.tag-input-wrapper:focus-within {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+.tag-input-wrapper .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(108, 99, 255, 0.15);
+  color: #6c63ff;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.tag-input-wrapper .tag .tag-remove {
+  cursor: pointer;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  line-height: 1;
+}
+.tag-input-wrapper .tag .tag-remove:hover {
+  opacity: 1;
+}
+.tag-input-wrapper input {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: white;
+  font-size: 0.85rem;
+  flex: 1;
+  min-width: 100px;
+  padding: 0.25rem 0;
+  font-family: 'Inter', sans-serif;
+}
+.tag-input-wrapper input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================================
+   17. RESPONSIVE — FORMS & MODALS
+   ============================================================ */
+@media (max-width: 768px) {
+  .modal {
+    max-width: 100%;
+    width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  .modal-overlay {
+    padding: 0;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .modal-header {
+    padding: 1.25rem;
+  }
+  .modal-body {
+    padding: 1.25rem;
+  }
+  .modal-footer {
+    padding: 1rem 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-footer {
+    flex-direction: column;
+  }
+  .modal-footer .btn {
+    width: 100%;
+  }
+  .modal-header h2 {
+    font-size: 1.1rem;
+  }
+}
