@@ -215,7 +215,7 @@
 
     <div class="container">
         <div class="image-section">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg/800px-Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg" alt="Steve Jobs">
+            <img src="assets/steve_jobs.jpg" alt="Steve Jobs">
         </div>
         <div class="content-section">
             <div>
