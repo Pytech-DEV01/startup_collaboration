@@ -1,9 +1,9 @@
 <?php
-$host = 'localhost';
-$port = 3307;
-$user = 'root';
-$password = '';
-$database = 'startup_portal';
+$host = getenv('DB_HOST') ?: 'localhost';
+$port = getenv('DB_PORT') ?: 3307;
+$user = getenv('DB_USER') ?: 'root';
+$password = getenv('DB_PASS') ?: '';
+$database = getenv('DB_NAME') ?: 'startup_portal';
 
 $conn = new mysqli($host, $user, $password, $database, $port);
 
