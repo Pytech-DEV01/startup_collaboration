@@ -2,7 +2,7 @@
 
     <!-- Footer -->
     <footer class="footer-bar">
-        <p>&copy; 2026 Startup Collaboration Portal. Built with ❤️</p>
+        <p>&copy; 2026 Startup Collaboration Portal.</p>
     </footer>
 
     <!-- Main Script -->

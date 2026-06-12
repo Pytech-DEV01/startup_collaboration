@@ -4,7 +4,7 @@
 // =============================================
 
 // --- Configuration ---
-const apiBase = window.location.pathname.includes('/pages/') ? '../api' : 'api';
+const apiBase = window.location.pathname.includes('/pages/') ? '../../api' : '../api';
 
 // =============================================
 // UTILITY FUNCTIONS

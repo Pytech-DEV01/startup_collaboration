@@ -36,7 +36,7 @@ Copy this entire `startup-portal` folder into your XAMPP `htdocs` directory.
 
 ### 4. Run the Project
 Open your browser and navigate to:
-[http://localhost/startup-portal/](http://localhost/startup-portal/)
+[http://localhost/startup-portal/FrontEnd/](http://localhost/startup-portal/FrontEnd/)
 
 ---
 
@@ -44,35 +44,42 @@ Open your browser and navigate to:
 
 ```text
 /startup-portal
-├── index.php                  # Main Dashboard page
-├── db.php                     # Database connection configuration
-├── database.sql               # Full schema + sample data (15 tables)
+├── FrontEnd/                      # Frontend root directory
+│   ├── index.php                  # Main Dashboard page
+│   ├── welcome.php                # Welcome / landing page
+│   │
+│   ├── /assets/                   # Frontend assets
+│   │   ├── style.css              # Main modern dark theme styles
+│   │   ├── dashboard.css          # Dashboard-specific layout styles
+│   │   ├── forms.css              # Modal and form styling
+│   │   ├── script.js              # All AJAX, dynamic DOM, and UI logic
+│   │   └── steve_jobs.jpg         # Welcome page image
+│   │
+│   ├── /pages/                    # Application sections
+│   │   ├── startups.php           # Startups directory & management
+│   │   ├── events.php             # Event listings & creation
+│   │   ├── investors.php          # Investor tracking
+│   │   ├── organizations.php      # Universities & incubators
+│   │   ├── applications.php       # Join/invest applications
+│   │   ├── mentorships.php        # Mentor-mentee connections
+│   │   └── participants.php       # Event registration tracking
+│   │
+│   └── /includes/                 # Reusable UI components
+│       ├── header.php             # Shared navigation & sidebar
+│       └── footer.php             # Shared footer & scripts
 │
-├── /assets/                   # Frontend assets
-│   ├── style.css              # Main modern dark theme styles
-│   ├── dashboard.css          # Dashboard-specific layout styles
-│   ├── forms.css              # Modal and form styling
-│   └── script.js              # All AJAX, dynamic DOM, and UI logic
+├── /api/                          # PHP Backend Layer (JSON responses)
+│   ├── fetch.php                  # Handles all SELECT/GET queries
+│   ├── insert.php                 # Handles all INSERT/POST queries
+│   ├── update.php                 # Handles all UPDATE operations
+│   ├── delete.php                 # Handles all DELETE operations
+│   └── register.php               # Specialized event registration logic
 │
-├── /pages/                    # Application sections
-│   ├── startups.php           # Startups directory & management
-│   ├── events.php             # Event listings & creation
-│   ├── investors.php          # Investor tracking
-│   ├── organizations.php      # Universities & incubators
-│   ├── applications.php       # Join/invest applications
-│   ├── mentorships.php        # Mentor-mentee connections
-│   └── participants.php       # Event registration tracking
-│
-├── /api/                      # PHP Backend Layer (JSON responses)
-│   ├── fetch.php              # Handles all SELECT/GET queries
-│   ├── insert.php             # Handles all INSERT/POST queries
-│   ├── update.php             # Handles all UPDATE operations
-│   ├── delete.php             # Handles all DELETE operations
-│   └── register.php           # Specialized event registration logic
-│
-└── /includes/                 # Reusable UI components
-    ├── header.php             # Shared navigation & sidebar
-    └── footer.php             # Shared footer & scripts
+├── db.php                         # Database connection configuration
+├── database.sql                   # Full schema + sample data (15 tables)
+├── Dockerfile                     # Docker build configuration
+├── README.md                      # Project documentation
+└── Project_Report.md              # Project report
 ```
 
 ---

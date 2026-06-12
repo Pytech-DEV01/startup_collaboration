@@ -1,7 +1,7 @@
 <?php
 $isSubPage = strpos($_SERVER['PHP_SELF'], '/pages/') !== false;
 $basePath = $isSubPage ? '..' : '.';
-$apiPath = $isSubPage ? '../api' : 'api';
+$apiPath = $isSubPage ? '../../api' : '../api';
 ?>
 <!DOCTYPE html>
 <html lang="en">
